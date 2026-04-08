@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>KALKI AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      background: #1e293b;
+    }
+    .chat-box {
+      height: 70vh;
+      overflow-y: auto;
+      padding: 10px;
+    }
+    .message {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 80%;
+    }
+    .user {
+      background: #2563eb;
+      align-self: flex-end;
+      margin-left: auto;
+    }
+    .ai {
+      background: #334155;
+    }
+    .input-area {
+      display: flex;
+      padding: 10px;
+      background: #1e293b;
+    }
+    input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      margin-left: 10px;
+      padding: 10px 15px;
+      border: none;
+      background: #22c55e;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>KALKI AI</header>
+
+<div class="chat-box" id="chatBox">
+  <div class="message ai">
+    I am KALKI. I guide you with clarity and courage. Ask anything.
+  </div>
+</div>
+
+<div class="input-area">
+  <input type="text" id="userInput" placeholder="Type your message...">
+  <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+function sendMessage() {
+  let input = document.getElementById("userInput");
+  let text = input.value.trim();
+  if (text === "") return;
+
+  let chatBox = document.getElementById("chatBox");
+
+  // User message
+  let userMsg = document.createElement("div");
+  userMsg.className = "message user";
+  userMsg.innerText = text;
+  chatBox.appendChild(userMsg);
+
+  input.value = "";
+
+  // AI response
+  let aiMsg = document.createElement("div");
+  aiMsg.className = "message ai";
+
+  // Simple response logic
+  if (text.toLowerCase().includes("sad") || text.toLowerCase().includes("depressed")) {
+    aiMsg.innerText = "Do not lose hope. Bhagavad Gita says: You have control over your actions, not the results. Stay strong.";
+  } else {
+    aiMsg.innerText = "I understand. I will guide you step by step.";
+  }
+
+  setTimeout(() => {
+    chatBox.appendChild(aiMsg);
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }, 500);
+}
+</script>
+
+</body>
+</html>
